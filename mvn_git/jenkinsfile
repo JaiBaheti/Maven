@@ -1,0 +1,24 @@
+pipeline{
+	agent any
+	
+	stages{
+		stage('Check stage'){
+			steps{
+				bat 'mvn --version'
+			}
+			
+		}
+		
+		stage('Compile Stage'){
+			steps{
+				bat 'mvn clean compile'
+			}
+		}
+		
+		stage('Test stage'){
+			steps{
+				bat 'mvn test'
+			}
+		}
+	}
+}
