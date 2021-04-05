@@ -14,10 +14,15 @@ public class TestPizza {
 	
 	@Test
 	public void invalidOrder() {
-		assertThrows(OrderCancelledException.class, ()->piz.order("S",1));
+		assertThrows(OrderCancelledException.class, ()->piz.order("S",1,""));
 	}
 	@Test
 	public void invalidNumber() {
-		assertThrows(NumberFormatException.class, ()->piz.order("", -1));
+		assertThrows(NumberFormatException.class, ()->piz.order("", -1,""));
+	}
+	
+	@Test
+	public void invalidBase() {
+		assertThrows(BaseException.class,()->piz.order("",1,"aws"));
 	}
 }
