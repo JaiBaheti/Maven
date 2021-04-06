@@ -4,20 +4,26 @@ pipeline{
 	stages{
 		stage('Check stage'){
 			steps{
+			withMaven(maven : 'Mvn'){
 				bat 'mvn --version'
+				}
 			}
 			
 		}
 		
 		stage('Compile Stage'){
 			steps{
-				bat 'mvn clean compile'
+			withMaven(maven : 'Mvn'){
+				bat 'mvn -f mvn_git/pom.xml clean compile'
+				}
 			}
 		}
 		
 		stage('Test stage'){
 			steps{
-				bat 'mvn test'
+			withMaven(maven : 'Mvn'){
+				bat 'mvn -f mvn_git/pom.xml test'
+				}
 			}
 		}
 	}
